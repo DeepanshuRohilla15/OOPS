@@ -10,13 +10,18 @@ class Hero{
   char level;
 
   Hero() {
-    cout<< "Constructor Called"<<endl;
+    cout<< "Simple Constructor Called"<<endl;
   }
 
   // Parametrised Constructor
-  Hero(int health) {
-    cout << "this -> "<< this <<endl;
+  Hero(int health,char level) {
+    this -> level = level;
     this -> health = health;
+  }
+
+  void print(){
+    cout<<"health "<< this->health<<endl;
+    cout<<"level "<<this->level<<endl;
   }
 
   int getHealth(){
@@ -40,12 +45,23 @@ class Hero{
 
 int main()
 {
-    
+
+    Hero S(70,'C');
+    S.print();
+
+
+    //Copy Constructor
+    Hero R(S);
+    R.print();
+
+
+
+    /*
     //object created statically
  
     Hero ram(10);
     cout<< "Address of ram" << &ram <<endl;
-
+    */
 
 
     /*
