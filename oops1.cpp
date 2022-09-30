@@ -13,6 +13,12 @@ class Hero{
     cout<< "Constructor Called"<<endl;
   }
 
+  // Parametrised Constructor
+  Hero(int health) {
+    cout << "this -> "<< this <<endl;
+    this -> health = health;
+  }
+
   int getHealth(){
       return health;
   }
@@ -36,9 +42,10 @@ int main()
 {
     
     //object created statically
-    cout<< "Hi"<< endl;
-    Hero ram;
-    cout<<"Hello"<< endl;
+ 
+    Hero ram(10);
+    cout<< "Address of ram" << &ram <<endl;
+
 
 
     /*
