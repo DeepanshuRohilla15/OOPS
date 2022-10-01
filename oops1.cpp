@@ -1,4 +1,4 @@
-#include<iostream>
+#include<bits/stdc++.h>
 using namespace std;
 
 class Hero{
@@ -6,11 +6,14 @@ class Hero{
    // properties
    private:
    int health;
-  public:
-  char level;
+
+   public:
+   char *name;
+   char level;
 
   Hero() {
     cout<< "Simple Constructor Called"<<endl;
+    name = new char[100];
   }
 
   // Parametrised Constructor
@@ -21,14 +24,22 @@ class Hero{
 
   //Copy Constructor
   Hero(Hero& temp){
+
+    char *ch = new char[strlen(temp.name) + 1];
+    strcpy(ch, temp.name);
+    this->name = ch;
+
     cout<< "Copy constructor called"<< endl;
     this->health=health;
     this->level=level;
   }
 
   void print(){
-    cout<<"health "<< this->health<<endl;
-    cout<<"level "<<this->level<<endl;
+    cout<<endl;
+    cout<< "[ Name: "<< this->name<<" ,";
+    cout<<"health "<< this->health<<" ,";
+    cout<<"level "<<this->level<<" ]";
+    cout<<endl;
   }
 
   int getHealth(){
@@ -47,12 +58,38 @@ class Hero{
       level = ch;
   }
    
+   void setName(char name[]) {
+    strcpy(this->name, name);
+   }
    
 };
 
 int main()
 {
 
+  Hero hero1;
+  hero1.setHealth(12);
+  hero1.setLevel('D');
+  char name[7] = "Ojju";
+  hero1.setName(name);
+
+  //hero1.print();
+
+  //use default copy constructor
+  Hero hero2(hero1);
+  //hero2.print();  or// Hero hero2 = hero1;
+
+  hero1.name[0] = 'G';
+  hero1.print();
+
+  hero2.print();
+
+  hero1 = hero2;
+  hero1.print();
+  hero2.print();
+
+
+  /*
     Hero S(70,'C');
     S.print();
 
@@ -61,7 +98,7 @@ int main()
     Hero R(S);
     R.print();
 
-
+   */
 
     /*
     //object created statically
